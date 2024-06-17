@@ -1,0 +1,59 @@
+<%- include('includes/head'); %>
+<%- include('includes/nav'); %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+      
+    </div>
+    <div class="col-lg-8 my-4">
+      <h1 class="text-center">Agenda </h1>
+      <p class="text-center lead my-4">Contatos </p>
+
+      <%- include('includes/messages'); %>
+
+      <% if(contatos.length > 0) { %>
+
+      <div class="responsive-table">
+        <table class="table my-3">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Sobrenome</th>
+              <th scope="col">Email</th>
+              <th scope="col">Telefone</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Excluir</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+          <% contatos.forEach(contato => { %>
+            <tr>
+              <td><%= contato.nome %></td>
+              <td><%= contato.sobrenome %></td>
+              <td><%= contato.email %></td>
+              <td><%= contato.telefone %></td>
+              <td><a class="text-decoration-none" href="/contato/index/<%= contato._id %>">Editar</a></td>
+              <td><a class="text-danger text-decoration-none" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
+            </tr>
+          </tbody>
+            
+          <%  }); %>
+
+        </table>
+      </div>
+
+      <% } else { %>
+      <p class="text-center lead">Não existem contatos na agenda</p>
+      <% }  %>
+      
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+  </div>
+</div>
+
+
+  <%- include('includes/footer'); %>
